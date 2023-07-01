@@ -13,17 +13,18 @@ import "fmt"
 // This solution consumes a bit more memory (it creates an additional map), but,
 // it is considerably faster, plus it does not modify original slice (sorting an
 // array and then checking for neighbors will modify original slice or consume
-// around the same amount of memory, plus it will be slower).
+// around the same amount of memory (maybe a little less), plus it will be slower,
+// or at least it is in my tests).
 func containsDuplicate(nums []int) bool {
-    nums_set := make(map[int]int)
-    for _, num:= range nums {
-        if nums_set[num]>0 {
-            return true
-        }
-        nums_set[num]=1
-    }
-    return false
+	nums_set := make(map[int]int)
+	for _, num := range nums {
+		if nums_set[num] > 0 {
+			return true
+		}
+		nums_set[num] = 1
+	}
+	return false
 }
 func main() {
-    fmt.Println(containsDuplicate([]int{1,1,1,3,3,4,3,2,4,2}))
+	fmt.Println(containsDuplicate([]int{1, 1, 1, 3, 3, 4, 3, 2, 4, 2}))
 }
